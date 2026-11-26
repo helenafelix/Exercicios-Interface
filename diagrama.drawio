@@ -1,0 +1,20 @@
+<mxfile host="app.diagrams.net" modified="2026-11-26T00:00:00.000Z" agent="Mozilla/5.0" version="24.7.17">
+  <diagram id="banco-diagrama" name="Página-1">
+    <mxGraphModel dx="1200" dy="800" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="1169" pageHeight="827" math="0" shadow="0">
+      <root>
+        <mxCell id="0"/>
+        <mxCell id="1" parent="0"/>
+        <mxCell id="cliente" value="&lt;b&gt;Cliente&lt;/b&gt;&lt;hr&gt;- nome: string&lt;br&gt;- cpf: string&lt;br&gt;- endereco: string&lt;br&gt;- renda: number&lt;br&gt;- contas: Conta[]&lt;hr&gt;+ adicionarConta(conta): void" style="swimlane;fontStyle=0;childLayout=stackLayout;horizontal=1;startSize=28;horizontalStack=0;resizeParent=1;resizeLast=0;collapsible=1;html=1;rounded=0;" vertex="1" parent="1"><mxGeometry x="60" y="210" width="240" height="190" as="geometry"/></mxCell>
+        <mxCell id="conta" value="&lt;b&gt;Conta&lt;/b&gt;&lt;hr&gt;- numero: string&lt;br&gt;- agencia: string&lt;br&gt;- dataAbertura: string&lt;br&gt;- saldo: number&lt;br&gt;- bloqueada: boolean&lt;hr&gt;+ depositar(valor): void&lt;br&gt;+ sacar(valor): void&lt;br&gt;+ consultarSaldo(): number" style="swimlane;fontStyle=0;childLayout=stackLayout;horizontal=1;startSize=28;horizontalStack=0;resizeParent=1;resizeLast=0;collapsible=1;html=1;rounded=0;" vertex="1" parent="1"><mxGeometry x="370" y="190" width="270" height="230" as="geometry"/></mxCell>
+        <mxCell id="notificacao" value="&lt;&lt;interface&gt;&gt;&lt;br&gt;&lt;b&gt;Notificacao&lt;/b&gt;&lt;hr&gt;+ enviar(mensagem): void" style="swimlane;fontStyle=0;childLayout=stackLayout;horizontal=1;startSize=42;horizontalStack=0;resizeParent=1;resizeLast=0;collapsible=1;html=1;rounded=0;" vertex="1" parent="1"><mxGeometry x="750" y="50" width="230" height="115" as="geometry"/></mxCell>
+        <mxCell id="sms" value="&lt;b&gt;SMS&lt;/b&gt;&lt;hr&gt;+ enviar(mensagem): void" style="swimlane;fontStyle=0;childLayout=stackLayout;horizontal=1;startSize=28;horizontalStack=0;resizeParent=1;resizeLast=0;collapsible=1;html=1;rounded=0;" vertex="1" parent="1"><mxGeometry x="680" y="230" width="180" height="90" as="geometry"/></mxCell>
+        <mxCell id="email" value="&lt;b&gt;Email&lt;/b&gt;&lt;hr&gt;+ enviar(mensagem): void" style="swimlane;fontStyle=0;childLayout=stackLayout;horizontal=1;startSize=28;horizontalStack=0;resizeParent=1;resizeLast=0;collapsible=1;html=1;rounded=0;" vertex="1" parent="1"><mxGeometry x="900" y="230" width="180" height="90" as="geometry"/></mxCell>
+        <mxCell id="app" value="&lt;b&gt;Aplicativo&lt;/b&gt;&lt;hr&gt;+ enviar(mensagem): void" style="swimlane;fontStyle=0;childLayout=stackLayout;horizontal=1;startSize=28;horizontalStack=0;resizeParent=1;resizeLast=0;collapsible=1;html=1;rounded=0;" vertex="1" parent="1"><mxGeometry x="790" y="370" width="180" height="90" as="geometry"/></mxCell>
+        <mxCell id="e1" value="1" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;endArrow=none;" edge="1" parent="1" source="cliente" target="conta"><mxGeometry relative="1" as="geometry"/></mxCell>
+        <mxCell id="e2" value="implementa" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;dashed=1;endArrow=block;endFill=0;" edge="1" parent="1" source="sms" target="notificacao"><mxGeometry relative="1" as="geometry"/></mxCell>
+        <mxCell id="e3" value="implementa" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;dashed=1;endArrow=block;endFill=0;" edge="1" parent="1" source="email" target="notificacao"><mxGeometry relative="1" as="geometry"/></mxCell>
+        <mxCell id="e4" value="implementa" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;dashed=1;endArrow=block;endFill=0;" edge="1" parent="1" source="app" target="notificacao"><mxGeometry relative="1" as="geometry"/></mxCell>
+      </root>
+    </mxGraphModel>
+  </diagram>
+</mxfile>

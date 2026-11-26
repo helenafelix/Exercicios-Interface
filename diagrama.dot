@@ -1,0 +1,71 @@
+digraph Banco {
+  graph [rankdir=LR, bgcolor="white", pad="0.3", nodesep="0.5", ranksep="0.9"];
+  node [shape=plain, fontname="Arial"];
+  edge [fontname="Arial", fontsize=10, color="#555555"];
+
+  Cliente [label=<
+    <TABLE BORDER="1" CELLBORDER="0" CELLSPACING="0" CELLPADDING="5">
+      <TR><TD BGCOLOR="#d9eaf7"><B>Cliente</B></TD></TR>
+      <TR><TD ALIGN="LEFT" BORDER="1">- nome: string<BR/>- cpf: string<BR/>- endereco: string<BR/>- renda: number<BR/>- contas: Conta[]</TD></TR>
+      <TR><TD ALIGN="LEFT"><B>+ adicionarConta(conta): void</B></TD></TR>
+    </TABLE>>];
+
+  Conta [label=<
+    <TABLE BORDER="1" CELLBORDER="0" CELLSPACING="0" CELLPADDING="5">
+      <TR><TD BGCOLOR="#d9eaf7"><B>Conta</B></TD></TR>
+      <TR><TD ALIGN="LEFT" BORDER="1">- numero: string<BR/>- agencia: string<BR/>- dataAbertura: string<BR/>- saldo: number<BR/>- bloqueada: boolean</TD></TR>
+      <TR><TD ALIGN="LEFT"><B>+ depositar(valor): void<BR/>+ sacar(valor): void<BR/>+ consultarSaldo(): number</B></TD></TR>
+    </TABLE>>];
+
+  Notificacao [label=<
+    <TABLE BORDER="1" CELLBORDER="0" CELLSPACING="0" CELLPADDING="5">
+      <TR><TD BGCOLOR="#f8e3b6"><I>&lt;&lt;interface&gt;&gt;</I><BR/><B>Notificacao</B></TD></TR>
+      <TR><TD ALIGN="LEFT" BORDER="1"><B>+ enviar(mensagem): void</B></TD></TR>
+    </TABLE>>];
+
+  SMS [label=<
+    <TABLE BORDER="1" CELLBORDER="0" CELLSPACING="0" CELLPADDING="5">
+      <TR><TD BGCOLOR="#e5f2df"><B>SMS</B></TD></TR>
+      <TR><TD ALIGN="LEFT" BORDER="1">+ enviar(mensagem): void</TD></TR>
+    </TABLE>>];
+  Email [label=<
+    <TABLE BORDER="1" CELLBORDER="0" CELLSPACING="0" CELLPADDING="5">
+      <TR><TD BGCOLOR="#e5f2df"><B>Email</B></TD></TR>
+      <TR><TD ALIGN="LEFT" BORDER="1">+ enviar(mensagem): void</TD></TR>
+    </TABLE>>];
+  Aplicativo [label=<
+    <TABLE BORDER="1" CELLBORDER="0" CELLSPACING="0" CELLPADDING="5">
+      <TR><TD BGCOLOR="#e5f2df"><B>Aplicativo</B></TD></TR>
+      <TR><TD ALIGN="LEFT" BORDER="1">+ enviar(mensagem): void</TD></TR>
+    </TABLE>>];
+
+  ValorInvalido [label=<
+    <TABLE BORDER="1" CELLBORDER="0" CELLSPACING="0" CELLPADDING="5">
+      <TR><TD BGCOLOR="#f5d6d6"><B>ValorInvalidoException</B></TD></TR>
+      <TR><TD ALIGN="LEFT" BORDER="1">+ mensagem: string</TD></TR>
+    </TABLE>>];
+  ContaBloqueada [label=<
+    <TABLE BORDER="1" CELLBORDER="0" CELLSPACING="0" CELLPADDING="5">
+      <TR><TD BGCOLOR="#f5d6d6"><B>ContaBloqueadaException</B></TD></TR>
+      <TR><TD ALIGN="LEFT" BORDER="1">+ mensagem: string</TD></TR>
+    </TABLE>>];
+  SaldoInsuficiente [label=<
+    <TABLE BORDER="1" CELLBORDER="0" CELLSPACING="0" CELLPADDING="5">
+      <TR><TD BGCOLOR="#f5d6d6"><B>SaldoInsuficienteException</B></TD></TR>
+      <TR><TD ALIGN="LEFT" BORDER="1">+ falta: number</TD></TR>
+    </TABLE>>];
+  LimiteExcedido [label=<
+    <TABLE BORDER="1" CELLBORDER="0" CELLSPACING="0" CELLPADDING="5">
+      <TR><TD BGCOLOR="#f5d6d6"><B>LimiteDiarioExcedidoException</B></TD></TR>
+      <TR><TD ALIGN="LEFT" BORDER="1">+ mensagem: string</TD></TR>
+    </TABLE>>];
+
+  Cliente -> Conta [label=" possui", arrowhead="none"];
+  SMS -> Notificacao [label=" implementa", style="dashed", arrowhead="empty"];
+  Email -> Notificacao [label=" implementa", style="dashed", arrowhead="empty"];
+  Aplicativo -> Notificacao [label=" implementa", style="dashed", arrowhead="empty"];
+  Conta -> ValorInvalido [label=" lança", style="dashed", arrowhead="empty"];
+  Conta -> ContaBloqueada [label=" lança", style="dashed", arrowhead="empty"];
+  Conta -> SaldoInsuficiente [label=" lança", style="dashed", arrowhead="empty"];
+  Conta -> LimiteExcedido [label=" lança", style="dashed", arrowhead="empty"];
+}

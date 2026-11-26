@@ -1,0 +1,74 @@
+import Cliente from "./Cliente"
+import Conta from "./Conta"
+import Notificacao from "./Notificacao"
+import SMS from "./SMS"
+import Email from "./Email"
+import Aplicativo from "./Aplicativo"
+
+let cliente1 = new Cliente("Ana Souza", "111.111.111-11", "Rua A, 10", 2500)
+let cliente2 = new Cliente("Bruno Lima", "222.222.222-22", "Rua B, 20", 3200)
+
+let conta1 = new Conta("1001", "0001", "01/10/2026", 1000, 2)
+let conta2 = new Conta("1002", "0001", "02/10/2026", 500, 2)
+let conta3 = new Conta("1003", "0001", "03/10/2026", 300, 2)
+let conta4 = new Conta("1004", "0001", "04/10/2026", 200, 2)
+
+cliente1.adicionarConta(conta1)
+cliente1.adicionarConta(conta2)
+cliente2.adicionarConta(conta3)
+cliente2.adicionarConta(conta4)
+
+conta1.setCliente(cliente1)
+conta2.setCliente(cliente1)
+conta3.setCliente(cliente2)
+conta4.setCliente(cliente2)
+
+function tentarSacar(conta: Conta, valor: number, notificacao: Notificacao): void{
+    try{
+        conta.sacar(valor)
+        console.log("Saque de R$"+valor.toFixed(2)+" realizado. Saldo: R$"+conta.consultarSaldo().toFixed(2))
+    } catch(erro){
+        if(erro instanceof Error){
+            notificacao.enviar(erro.message)
+        }
+    }
+}
+
+console.log("--- ASSOCIAÇÃO ENTRE CLIENTE E CONTA ---")
+console.log(cliente1.getNome()+" possui "+cliente1.getContas().length+" contas.")
+console.log(cliente2.getNome()+" possui "+cliente2.getContas().length+" contas.")
+
+console.log("\n--- INTERFACE DE NOTIFICAÇÃO ---")
+let canais: Notificacao[] = [new SMS(), new Email(), new Aplicativo()]
+for(let canal of canais){
+    canal.enviar("Bem-vindo ao banco digital!")
+}
+
+console.log("\n--- VALOR INVÁLIDO: 2 EXEMPLOS ---")
+tentarSacar(conta1, -50, new SMS())
+tentarSacar(conta2, 0, new Email())
+
+console.log("\n--- CONTA BLOQUEADA: 2 EXEMPLOS ---")
+conta1.setBloqueada(true)
+conta2.setBloqueada(true)
+tentarSacar(conta1, 100, new Aplicativo())
+tentarSacar(conta2, 100, new SMS())
+conta1.setBloqueada(false)
+conta2.setBloqueada(false)
+
+console.log("\n--- SALDO INSUFICIENTE: 2 EXEMPLOS ---")
+tentarSacar(conta3, 500, new Email())
+tentarSacar(conta4, 250, new Aplicativo())
+
+console.log("\n--- LIMITE DIÁRIO: 2 EXEMPLOS ---")
+tentarSacar(conta1, 100, new SMS())
+tentarSacar(conta1, 100, new SMS())
+tentarSacar(conta1, 100, new Email())
+tentarSacar(conta1, 100, new Aplicativo())
+
+console.log("\n--- SAQUE REALIZADO: 2 EXEMPLOS ---")
+tentarSacar(conta3, 50, new SMS())
+tentarSacar(conta4, 50, new Email())
+
+console.log("\nSaldo final da conta 3: R$"+conta3.consultarSaldo().toFixed(2))
+console.log("Saldo final da conta 4: R$"+conta4.consultarSaldo().toFixed(2))
