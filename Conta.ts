@@ -1,8 +1,8 @@
 import Cliente from "./Cliente"
-import ValorInvalidoException from "./ValorInvalidoException"
-import ContaBloqueadaException from "./ContaBloqueadaException"
-import SaldoInsuficienteException from "./SaldoInsuficienteException"
-import LimiteDiarioExcedidoException from "./LimiteDiarioExcedidoException"
+import ValorInvalidoException from "./excecoes/ValorInvalidoException"
+import ContaBloqueadaException from "./excecoes/ContaBloqueadaException"
+import SaldoInsuficienteException from "./excecoes/SaldoInsuficienteException"
+import LimiteDiarioExcedidoException from "./excecoes/LimiteDiarioExcedidoException"
 
 export default class Conta {
     private numero: string
