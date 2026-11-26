@@ -1,0 +1,1 @@
+{"version":3,"file":"LimiteDiarioExcedidoException.js","sourceRoot":"","sources":["../../src/excecoes/LimiteDiarioExcedidoException.ts"],"names":[],"mappings":";;AAAA,MAAqB,6BAA8B,SAAQ,KAAK;IAC5D;QACI,KAAK,CAAC,wBAAwB,CAAC,CAAA;QAC/B,IAAI,CAAC,IAAI,GAAG,+BAA+B,CAAA;IAC/C,CAAC;CACJ;AALD,gDAKC"}

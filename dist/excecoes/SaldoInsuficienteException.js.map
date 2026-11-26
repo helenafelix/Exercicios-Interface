@@ -1,0 +1,1 @@
+{"version":3,"file":"SaldoInsuficienteException.js","sourceRoot":"","sources":["../../src/excecoes/SaldoInsuficienteException.ts"],"names":[],"mappings":";;AAAA,MAAqB,0BAA2B,SAAQ,KAAK;IACtC;IAAnB,YAAmB,KAAa;QAC5B,KAAK,CAAC,8BAA8B,GAAC,KAAK,CAAC,OAAO,CAAC,CAAC,CAAC,CAAC,CAAA;QADvC,UAAK,GAAL,KAAK,CAAQ;QAE5B,IAAI,CAAC,IAAI,GAAG,4BAA4B,CAAA;IAC5C,CAAC;CACJ;AALD,6CAKC"}
